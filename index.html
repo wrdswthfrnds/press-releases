@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The XYZ Times</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1a1a1a;
+    --paper:#f6f1e7;
+    --rule:#1a1a1a;
+    --muted:#5a5348;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:#e8e2d5;
+    color:var(--ink);
+    font-family:'PT Serif',Georgia,serif;
+    line-height:1.55;
+  }
+  .paper{
+    max-width:1100px;
+    margin:24px auto;
+    background:var(--paper);
+    padding:40px 48px 64px;
+    box-shadow:0 4px 24px rgba(0,0,0,.18);
+    background-image:linear-gradient(rgba(120,110,90,.03) 1px,transparent 1px);
+    background-size:100% 3px;
+  }
+
+  /* Masthead */
+  .top-bar{
+    display:flex;justify-content:space-between;
+    font-family:'Oswald',sans-serif;
+    text-transform:uppercase;letter-spacing:.12em;
+    font-size:11px;color:var(--muted);
+    border-bottom:1px solid var(--rule);
+    padding-bottom:6px;
+  }
+  .masthead{
+    text-align:center;
+    border-bottom:4px double var(--rule);
+    padding:14px 0 10px;
+    margin-bottom:0;
+  }
+  .masthead h1{
+    font-family:'Playfair Display',serif;
+    font-weight:900;
+    font-size:clamp(48px,9vw,104px);
+    margin:4px 0 2px;
+    letter-spacing:-.01em;
+    line-height:.95;
+  }
+  .masthead .tagline{
+    font-family:'Oswald',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.35em;
+    font-size:12px;
+    color:var(--muted);
+  }
+  .dateline-bar{
+    display:flex;justify-content:space-between;align-items:center;
+    font-family:'Oswald',sans-serif;
+    text-transform:uppercase;letter-spacing:.1em;
+    font-size:11px;color:var(--muted);
+    border-top:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+    padding:5px 0;
+    margin-bottom:26px;
+  }
+
+  /* Lead article */
+  article{margin-bottom:40px;}
+  .kicker{
+    font-family:'Oswald',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.18em;
+    font-size:12px;
+    color:#8a1e1e;
+    font-weight:700;
+    margin-bottom:8px;
+    text-align:center;
+  }
+  .headline{
+    font-family:'Playfair Display',serif;
+    font-weight:900;
+    font-size:clamp(30px,4.6vw,52px);
+    line-height:1.06;
+    text-align:center;
+    margin:0 auto 6px;
+    max-width:960px;
+  }
+  .subhead{
+    font-family:'PT Serif',serif;
+    font-style:italic;
+    font-size:clamp(16px,2vw,20px);
+    text-align:center;
+    color:var(--muted);
+    max-width:760px;
+    margin:0 auto 18px;
+  }
+  .byline{
+    font-family:'Oswald',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    font-size:11px;
+    text-align:center;
+    color:var(--ink);
+    border-top:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+    padding:6px 0;
+    max-width:420px;
+    margin:0 auto 22px;
+  }
+
+  .cols{
+    column-count:3;
+    column-gap:30px;
+    column-rule:1px solid #cfc6b3;
+    text-align:justify;
+    hyphens:auto;
+  }
+  .cols p{margin:0 0 14px;font-size:15px;}
+  .cols p:first-of-type::first-letter{
+    font-family:'Playfair Display',serif;
+    font-weight:900;
+    font-size:64px;
+    line-height:.72;
+    float:left;
+    padding:6px 8px 0 0;
+    color:var(--ink);
+  }
+  .pull{
+    break-inside:avoid;
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    font-size:20px;
+    line-height:1.3;
+    border-top:3px solid var(--rule);
+    border-bottom:3px solid var(--rule);
+    padding:12px 0;
+    margin:6px 0 16px;
+    text-align:left;
+  }
+  figure{margin:0 0 16px;break-inside:avoid;}
+  figure img{width:100%;display:block;filter:grayscale(100%) contrast(1.05);border:1px solid #d8cfbd;}
+  figcaption{
+    font-family:'PT Serif',serif;font-style:italic;
+    font-size:12px;color:var(--muted);
+    padding-top:5px;border-top:1px solid #cfc6b3;margin-top:5px;
+  }
+  .lead-figure{width:100%;margin:0 auto 26px;max-width:760px;}
+
+  .section-divider{
+    border:0;border-top:4px double var(--rule);
+    margin:36px 0 30px;
+  }
+
+  footer{
+    text-align:center;
+    font-family:'Oswald',sans-serif;
+    text-transform:uppercase;letter-spacing:.2em;
+    font-size:11px;color:var(--muted);
+    border-top:1px solid var(--rule);
+    padding-top:14px;margin-top:20px;
+  }
+
+  @media(max-width:820px){
+    .paper{padding:24px 18px 40px;margin:0;}
+    .cols{column-count:2;}
+  }
+  @media(max-width:560px){
+    .cols{column-count:1;}
+  }
+</style>
+</head>
+<body>
+<div class="paper">
+
+  <div class="top-bar">
+    <span>Vol. MMXXVI &middot; No. 1</span>
+    <span>Est. 2026</span>
+    <span>Price: One Judgment Call</span>
+  </div>
+
+  <header class="masthead">
+    <div class="tagline">All the Judgment That's Fit to Print</div>
+    <h1>The XYZ Times</h1>
+  </header>
+
+  <div class="dateline-bar">
+    <span>Monday, July 20, 2026</span>
+    <span>Business &amp; Technology Edition</span>
+    <span>xyz.vc</span>
+  </div>
+
+  <!-- LEAD STORY -->
+  <article>
+    <div class="kicker">The Agent Economy</div>
+    <h2 class="headline">The New Limits Are No Limits</h2>
+    <p class="subhead">Ammar Kazi built America's No.&nbsp;1 health app. Then his software found a company no investor had ever heard of.</p>
+    <div class="byline">By The XYZ Times Staff &middot; San Francisco</div>
+
+    <figure class="lead-figure">
+      <img src="images/p1_x7.png" alt="Ammar Kazi at his desk at XYZ, beside a framed App Store review reading 'this app changed my life.'">
+      <figcaption>A printout of the first App Store review saying &ldquo;this app changed my life&rdquo; sits framed on Kazi's desk at XYZ.</figcaption>
+    </figure>
+
+    <div class="cols">
+      <p>Kinase crossed six million downloads last week and became the App Store's&nbsp;#1 health and fitness app. It has zero employees, and building it is not Ammar's job. He is an investor at XYZ Venture Capital, and Kinase is one of three things he did in the past two years.</p>
+
+      <p>Kinase is named for the enzyme that lowers a reaction's activation energy, and that is the whole product: it reads your calendar, finds the 40 free minutes you would have spent scrolling, books the workout, and removes every excuse before you can make it. Ammar wrote it across eleven weekends; AI agents wrote the code, handled App Store review, and answer its support tickets.</p>
+
+      <p>The app went viral in March for its accountability feature, which holds users' friends &ldquo;hostage&rdquo; with escalating, absurd messages. The screenshot that did it &mdash; &ldquo;If you don't log your food today, I'm sending a picture of a foot to Jake&rdquo; &mdash; pulled 44&nbsp;million views in a week, and &ldquo;I fear the foot&rdquo; became group-chat shorthand for getting your life together.</p>
+
+      <p class="pull">&ldquo;The scarce inputs are judgment and the willingness to get on the plane. Agents did everything except decide what mattered.&rdquo;</p>
+
+      <p>The same pattern ran through his role at XYZ. In 2026 Ammar began to automate XYZ's internal paperwork &mdash; meeting notes, pass emails, the firm's deal tracking &mdash; and the investment team doubled its time in front of founders. He then pointed efforts outward and built a sourcing agent to read grid interconnection queues, county building permits, and import manifests every night.</p>
+
+      <p>Last October it flagged Kiln Energy, a five-person team in Gary, Indiana, with no website &mdash; just import manifests showing graphite blocks arriving by the shipload and a tariff filing showing them buying power at 2&nbsp;a.m. Kiln stores cheap off-peak electricity as 1,500&deg;C heat in graphite and sells it to steel and cement plants, a run at the 20% of global energy that is industrial heat, which no one has electrified. Ammar was on a flight the next morning.</p>
+
+      <p>XYZ led its $8m seed in November. Kiln's first units now run inside a Gary steel mill, with eleven Midwest plants on the order book.</p>
+
+      <p>&ldquo;In 2026, each of those things needed a team &mdash; engineers, designers, analysts,&rdquo; Kazi said. &ldquo;Now the scarce inputs are judgment and the willingness to get on the plane. Agents did everything except decide what mattered.&rdquo;</p>
+
+      <p>&ldquo;No investor had ever heard of us &mdash; we melt graphite in a converted steel warehouse,&rdquo; said Dr. Annie Sun, Kiln's founder. &ldquo;Ammar found us from our shipping manifests before our own state's economic development office did. Then he showed up in person, in Gary!&rdquo;</p>
+
+      <p>Ammar's two years read as a case study: nothing he used was proprietary. The agents behind Kinase, the automations at XYZ, and the sourcing tool that found Kiln run on the same publicly available models anyone can use. Ammar is one case study among thousands &mdash; judgment is now the unit of production.</p>
+    </div>
+  </article>
+
+  <hr class="section-divider">
+
+  <!-- SECOND STORY -->
+  <article>
+    <div class="kicker">Venture Capital</div>
+    <h2 class="headline">Jony Ive Buys 2% of XYZ, Joins as Venture Partner</h2>
+    <p class="subhead">The last craft in finance: in an industry that barely resembles the one that existed five years ago, one firm bet everything on taste.</p>
+    <div class="byline">By The XYZ Times Staff</div>
+
+    <figure class="lead-figure">
+      <img src="images/p3_x13.png" alt="Sir Jony Ive alongside an XYZ partner in a black-and-white portrait.">
+      <figcaption>Sir Jony Ive, left, has joined XYZ as venture partner &mdash; his first role in venture capital.</figcaption>
+    </figure>
+
+    <div class="cols">
+      <p>XYZ today announced that Sir Jony Ive has personally acquired a 2% stake in the firm's management company and joined as venture partner &mdash; his first role in venture capital, in an industry that barely resembles the one that existed five years ago.</p>
+
+      <p>&ldquo;I spent forty years trying to make things that felt inevitable,&rdquo; said Ive. &ldquo;This is the first firm I've found that treats a decision the same way &mdash; as something you refine until it can't be anything else. I didn't buy a strategy. I bought into a room that still argues about the work.&rdquo;</p>
+
+      <p>As company-formation costs collapsed, a solo founder with an agent team now reaches $50M in revenue before hiring a fifth employee, and 40,000 new companies incorporate every week. Diligence takes minutes. Every firm's models read the same data rooms, price the same rounds, and produce the same term sheets, often without a human in the loop. LPs are now allocating to fully algorithmic firms.</p>
+
+      <p class="pull">&ldquo;What AI could not commoditize is the one thing left to own: taste.&rdquo;</p>
+
+      <p>Capital, information, and analysis &mdash; the entire edge stack of 2020s venture &mdash; have become commodities. What AI could not commoditize is the one thing left to own: taste. While the industry raced to automate judgment, XYZ automated everything around it &mdash; sourcing, notes, memos, tracking, the machinery &mdash; and left the decision itself to people.</p>
+
+      <p>Between 2026 and 2029, as rivals scaled AUM and headcount, XYZ did the opposite. It capped the fund, held the partnership to six investors, built an agent stack that erased every task except the choosing, and kept the Monday meeting sacred. Peers called it nostalgia.</p>
+
+      <p>In 2029, Ive began sitting in on those Monday meetings. He stayed, he said, because it was the only investment committee that talked about work the way designers do.</p>
+
+      <p>&ldquo;In 2030, as rivals launched their first algorithmic vehicles, XYZ quietly turned away a $5B vehicle from a sovereign wealth fund,&rdquo; said the Chief Investment Officer of the University of Pittsburgh, an XYZ LP. &ldquo;Every firm I've watched for thirty years eventually sold its discipline for AUM. XYZ treats staying nimble as the product.&rdquo;</p>
+
+      <p>When intelligence became free, the industry assumed judgment had too. The opposite happened. With every firm running the same models, consensus became instant, universal, and worthless, and the entire return of the asset class migrated to whoever could see value before the machines could score it. XYZ is the only multi-stage firm of its era that never launched an algorithmic vehicle, and it is among the few that can still say a human made every call.</p>
+
+      <p>&ldquo;AI ate every part of this business that could be systematized, and it should have,&rdquo; said Ammar Kazi, investor at XYZ. &ldquo;What's left is the part that was always the job &mdash; sitting across from a person with an idea that doesn't work yet, and deciding. Everyone else scaled out of that work. Jony bought into the decision to stay at the bench.&rdquo;</p>
+    </div>
+  </article>
+
+  <footer>
+    The XYZ Times &middot; All the Judgment That's Fit to Print &middot; &copy; MMXXVI
+  </footer>
+
+</div>
+</body>
+</html>
